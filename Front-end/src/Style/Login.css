@@ -1,0 +1,54 @@
+.input-field {
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.login-button {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+.google-auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.google-auth-container .google-login-button {
+  background-color: #db4a39;
+  color: #ffffff;
+  border: none;
+  padding: 10px 81px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.google-auth-container .google-login-button:hover {
+  background-color: #c53727;
+}
+.forgot-password {
+  padding-top: 20px;
+}

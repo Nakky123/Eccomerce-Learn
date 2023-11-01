@@ -1,0 +1,90 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  transition: width 0.5s;
+}
+
+.brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: flex-end; /* Align navbar-links to the right */
+  width: 50%;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #ff7f50;
+}
+
+.icon {
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.5rem;
+  display: none;
+}
+.brand-name {
+  color: #ff7f50; /* Change the color as per your preference */
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.brand-name:hover {
+  color: #ffa07a; /* Change the hover color as per your preference */
+  /* Add any other styles you want for the hover effect */
+}
+
+@media only screen and (max-width: 768px) {
+  .brand-name {
+    color: #ff7f50; /* Change the color as per your preference */
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .brand-name:hover {
+    color: #ffa07a; /* Change the hover color as per your preference */
+    /* Add any other styles you want for the hover effect */
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    position: absolute;
+    top: 53px;
+    left: -50%; /* Initially hide the menu off-screen */
+    width: 50%;
+    transition: all 0.5s; /* Add transition for open and close */
+    background-color: #333;
+  }
+
+  .navbar-links.active {
+    left: 0; /* Slide in the menu when active */
+  }
+
+  .navbar-links a {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+
+  .icon {
+    display: block;
+  }
+}

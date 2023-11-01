@@ -1,0 +1,65 @@
+/* Admindashboard.css */
+.admin-menu-container {
+  margin: 20px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th {
+  color: white;
+}
+
+.admin-table th,
+.admin-table td {
+  border-bottom: 1px solid gray;
+  text-align: left;
+  padding: 8px;
+}
+
+.admin-table th {
+  background-color: #82b440;
+}
+
+.admin-details {
+  margin-top: 20px;
+}
+
+.admin-details h3 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.admin-details span {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.admin-details p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.admin-card {
+  background-color: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.admin-link-card {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+}
+
+.admin-link-card:hover {
+  background-color: #e6e6e6;
+}

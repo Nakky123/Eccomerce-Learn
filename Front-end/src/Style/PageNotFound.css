@@ -1,0 +1,18 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.errors-404 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+p {
+  font-size: 1.3rem;
+  color: #666;
+}
