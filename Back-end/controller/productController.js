@@ -176,12 +176,12 @@ const deleteProductController = async (req, res) => {
 };
 
 //update product controller
+
 const updateProductController = async (req, res) => {
   try {
     const productId = req.params.id;
     const { name, description, price, category, quantity } = req.fields;
     const { photo } = req.files;
-    const slug = slugify(name);
 
     // Check if the product exists
     let product = await productModel.findById(productId);
@@ -196,7 +196,7 @@ const updateProductController = async (req, res) => {
     product.price = price;
     product.category = category;
     product.quantity = quantity;
-    product.slug = slug;
+    product.slug = slugify(name); // Make sure the slugify function is working properly
 
     if (photo) {
       product.photo.data = fs.readFileSync(photo.path);
@@ -217,7 +217,7 @@ const updateProductController = async (req, res) => {
         price: product.price,
         category: product.category,
         quantity: product.quantity,
-        photo: product.photo,
+        photo: product.photo, // Make sure the photo is properly saved
         createdAt: product.createdAt,
         updatedAt: product.updatedAt,
       },

@@ -39,6 +39,6 @@ router.get("/get-photo/:id", getPhotoController);
 router.delete("/delete-product/:id", requireSignIn, deleteProductController);
 
 // update product
-router.patch("/update-product", requireSignIn, updateProductController);
+router.put("/update-product/:id", requireSignIn, updateProductController);
 
 module.exports = router;
