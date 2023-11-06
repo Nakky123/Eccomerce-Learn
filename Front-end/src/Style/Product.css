@@ -1,0 +1,118 @@
+.select-container {
+  margin-bottom: 20px;
+  padding: 30px 20px;
+  margin: 0 auto;
+}
+
+.custom-select {
+  width: 100%;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  width: 300px;
+  margin: 10px;
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.photo-upload-container {
+  display: flex;
+
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.photo-upload-label {
+  padding: 14px 120px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.product-photo-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.product-photo-wrapper {
+  width: 200px;
+  height: 200px;
+}
+
+.product-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+/* Product.css */
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-textarea {
+  height: 150px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.photo-upload-label {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.product-photo-wrapper {
+  margin-top: 20px;
+}
+
+.product-photo {
+  max-width: 100%;
+  border-radius: 5px;
+}
+.wrapper-whole {
+  margin: 0 auto;
+  width: 60%;
+}

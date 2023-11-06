@@ -3,30 +3,33 @@ const categoryModel = require("../models/categoryModel");
 
 const createCategoryController = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name } = req.fields;
     if (!name) {
-      return res.status(404).send({ message: "Name is required" });
+      return res.status(401).send({ message: "Name is required" });
     }
     const existingCategory = await categoryModel.findOne({ name });
     if (existingCategory) {
-      return res
-        .status(200)
-        .send({ message: "Category already exists", success: true });
+      return res.status(200).send({
+        success: false,
+        message: "Category Already Exisits",
+      });
     }
     const category = await new categoryModel({
       name,
       slug: slugify(name),
     }).save();
-    res.status(200).send({
-      message: "New category created",
+    res.status(201).send({
       success: true,
+      message: "new category created",
       category,
     });
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .json({ success: false, required: true, error: error.message });
+    res.status(500).send({
+      success: false,
+      errro,
+      message: "Errro in Category",
+    });
   }
 };
 

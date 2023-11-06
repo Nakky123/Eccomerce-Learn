@@ -36,6 +36,4 @@ router.get(
   getSingleCategoryController
 );
 
-
-
 module.exports = router;

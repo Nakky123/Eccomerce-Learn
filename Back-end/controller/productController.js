@@ -4,7 +4,8 @@ const fs = require("fs");
 
 const createProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity } = req.fields;
+    const { name, description, price, category, quantity, shipping } =
+      req.fields;
     const { photo } = req.files;
     const slug = slugify(name);
 
@@ -19,6 +20,7 @@ const createProductController = async (req, res) => {
       category,
       quantity,
       slug,
+      shipping,
     });
 
     if (photo) {
@@ -27,6 +29,7 @@ const createProductController = async (req, res) => {
     }
 
     await newProduct.save();
+
     // Prepare a simplified response for the photo data
     const simplifiedPhotoData = {
       contentType: newProduct.photo.contentType,
@@ -37,6 +40,7 @@ const createProductController = async (req, res) => {
       message: "Product created successfully",
       success: true,
       product: {
+        shipping: newProduct.shipping,
         _id: newProduct._id,
         name: newProduct.name,
         slug: newProduct.slug,

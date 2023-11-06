@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Policy from "./pages/Policy";
+
 import Pagenotfound from "./pages/PageNotFound";
 import Register from "./pages/Auth/Reigster";
 import Login from "./pages/Auth/Login";
@@ -14,6 +14,8 @@ import ForgotPassword from "./pages/Auth/ForgotPassword";
 import AdminDashboard from "./pages/Admin/Admindashboard";
 import CreateCategory from "./pages/Admin/CreateCategory";
 import CreateProduct from "./pages/Admin/CreateProduct";
+import UpdateProduct from "./pages/Admin/UpdateProduct";
+import Policy from "./pages/Admin/Policy";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/Admindashboard" element={<AdminDashboard />} />
+        <Route path="/update-product/:slug" element={<UpdateProduct />} />
         <Route path="/create-category" element={<CreateCategory />} />
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/dashboard" element={<Dashboard />} />

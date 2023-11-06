@@ -22,12 +22,7 @@ router.post(
 );
 
 // get product route
-router.get(
-  "/get-product/:slug",
-  requireSignIn,
-  formidable(),
-  getProductController
-);
+router.get("/get-product/:slug", formidable(), getProductController);
 
 // get product route
 router.get("/get-all-products", getAllProductsController);
@@ -39,6 +34,11 @@ router.get("/get-photo/:id", getPhotoController);
 router.delete("/delete-product/:id", requireSignIn, deleteProductController);
 
 // update product
-router.put("/update-product/:id", requireSignIn, updateProductController);
+router.post(
+  "/update-product/:id",
+  requireSignIn,
+  formidable(),
+  updateProductController
+);
 
 module.exports = router;

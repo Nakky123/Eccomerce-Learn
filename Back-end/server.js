@@ -19,7 +19,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(formidable());
+//app.use(formidable());
 
 // Routes
 app.use("/api/auth", authRoutes);

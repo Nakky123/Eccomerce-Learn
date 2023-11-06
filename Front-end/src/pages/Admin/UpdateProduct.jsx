@@ -1,12 +1,13 @@
+import Layout from "../../components/Layout";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Layout from "../../components/Layout";
 import { useAuth } from "../../context/auth";
 import { Select, Card } from "antd";
 import "../../Style/Product.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const CreateProduct = () => {
+const UpdateProduct = () => {
+  const params = useParams();
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -16,15 +17,38 @@ const CreateProduct = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [shipping, setShipping] = useState("");
+  const [shipping, setShipping] = useState([]);
   const [photo, setPhoto] = useState("");
+  const [id, setId] = useState("");
 
   const getToken = () => {
     return localStorage.getItem("token");
   };
 
-  // create Product function
-  const handleCreate = async (e) => {
+  const getSingleProduct = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:8000/api/product/get-product/${params.slug}`
+      );
+      setName(data.product.name);
+      setProducts(data.product.products);
+      setId(data.product._id);
+      setPrice(data.product.price);
+      setQuantity(data.product.quantity);
+      setDescription(data.product.description);
+      setShipping(data.product.shipping);
+      setCategory(data.product.category);
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
+  };
+  console.log("Shipping : ", shipping);
+  useEffect(() => {
+    getSingleProduct();
+  }, []);
+
+  const handleUpdate = async (e) => {
     e.preventDefault(); // Corrected typo
 
     try {
@@ -44,13 +68,13 @@ const CreateProduct = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:8000/api/product/create-product",
+        `http://localhost:8000/api/product/update-product/${id}`,
         productData,
         config // Added the config
       );
 
       if (data.success) {
-        alert("Product created successfully");
+        alert("Product update successfully");
         navigate("/policy");
       }
     } catch (error) {
@@ -81,37 +105,13 @@ const CreateProduct = () => {
     }
   };
 
-  const getAllProduct = async () => {
-    try {
-      const token = getToken();
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token || auth.token}`,
-        },
-      };
-
-      const { data } = await axios.get(
-        "http://localhost:8000/api/product/get-all-products",
-        config
-      );
-
-      if (data.success) {
-        setProducts(data.products);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
-    getAllProduct();
     getAllCategories();
   }, []);
-
   return (
     <Layout>
       <form className="wrapper-whole">
-        <h1>Create Product</h1>
+        <h1>Update Product</h1>
         <div className="select-container">
           <Select
             className="custom-select"
@@ -121,10 +121,11 @@ const CreateProduct = () => {
             onChange={(value) => {
               setCategory(value);
             }}
+            value={category}
           >
-            {categories.map((category) => (
-              <Select.Option key={category._id} value={category._id}>
-                {category.name}
+            {categories.map((categoryItem) => (
+              <Select.Option key={categoryItem._id} value={categoryItem._id}>
+                {categoryItem.name}
               </Select.Option>
             ))}
           </Select>
@@ -142,10 +143,18 @@ const CreateProduct = () => {
           </label>
         </div>
         <div className="product-photo-container">
-          {photo && (
+          {photo ? (
             <div className="product-photo-wrapper">
               <img
                 src={URL.createObjectURL(photo)}
+                alt="product-photo"
+                className="product-photo"
+              />
+            </div>
+          ) : (
+            <div className="product-photo-wrapper">
+              <img
+                src={`http://localhost:8000/api/product/get-photo/${id}`}
                 alt="product-photo"
                 className="product-photo"
               />
@@ -200,15 +209,16 @@ const CreateProduct = () => {
             onChange={(value) => {
               setShipping(value);
             }}
+            value={shipping ? "yes" : "no"}
           >
             <Option value="0">No</Option>
             <Option value="1">Yes</Option>
           </Select>
         </div>
-        <button onClick={handleCreate}>CREATE</button>
+        <button onClick={handleUpdate}>UPDATE</button>
       </form>
     </Layout>
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;

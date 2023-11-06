@@ -39,7 +39,7 @@ const Header = () => {
           About
         </NavLink>
         <NavLink to="/policy" href="#">
-          Policy
+          Products
         </NavLink>
         <NavLink to="/contact" href="#">
           Contact
